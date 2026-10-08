@@ -96,14 +96,16 @@
     hudBar.style.transform = `scaleX(${p})`;
     hudTc.textContent = tc(Math.round(p * 5400));
   });
-  $$('[data-scene]').forEach(sec => ScrollTrigger.create({
-    trigger: sec, start: 'top 55%', end: 'bottom 55%',
-    onToggle: s => {
-      if (!s.isActive) return;
-      hudScene.textContent = 'CENA ' + sec.dataset.scene;
-      hudLabel.textContent = sec.dataset.label;
-    }
-  }));
+  const scenes = $$('[data-scene]');
+  let sceneNow = null;
+  gsap.ticker.add(() => {
+    const mid = innerHeight * .5;
+    const sec = scenes.find(s => { const r = s.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; });
+    if (!sec || sec === sceneNow) return;
+    sceneNow = sec;
+    hudScene.textContent = 'CENA ' + sec.dataset.scene;
+    hudLabel.textContent = sec.dataset.label;
+  });
 
   /* ---------- nav ---------- */
   const nav = $('.nav');
@@ -317,6 +319,7 @@
   /* ---------- fé ---------- */
   gsap.from('.foot__big', { y: 60, opacity: 0, duration: 1.3, ease: 'expo.out', scrollTrigger: { trigger: '.foot__main', start: 'top 85%' } });
 
+  ScrollTrigger.refresh();
   addEventListener('load', () => ScrollTrigger.refresh());
 })();
 

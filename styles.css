@@ -206,9 +206,9 @@ svg{width:1em;height:1em;flex:none}
 .reel__cap{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;display:flex;flex-direction:column;gap:4px}
 .reel__cap b{font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:800;font-size:clamp(17px,1.5vw,22px);line-height:1.1;text-transform:uppercase}
 .reel__cap span{font-size:14px;color:rgba(255,255,255,.75);line-height:1.35}
-.reel--end{display:flex;flex-direction:column;justify-content:center;gap:26px;padding:28px;background:var(--red);aspect-ratio:3/4}
+.reel--end{display:flex;flex-direction:column;justify-content:center;gap:26px;padding:clamp(24px,2.4vw,40px);background:var(--red);aspect-ratio:auto;width:clamp(300px,30vw,480px)}
 .reel--end::after{display:none}
-.reel--end p{font-family:var(--display);font-variation-settings:"wdth" 115;font-weight:800;font-size:clamp(26px,2.6vw,40px);line-height:1.02;text-transform:uppercase}
+.reel--end p{font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:800;font-size:clamp(24px,2.2vw,36px);line-height:1.05;text-transform:uppercase;overflow-wrap:break-word;hyphens:none}
 .reel--end .btn{background:var(--ink);align-self:flex-start}
 
 /* ---------- voo (canvas) ---------- */
